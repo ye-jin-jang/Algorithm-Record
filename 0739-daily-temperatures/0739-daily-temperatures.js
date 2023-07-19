@@ -2,21 +2,21 @@
  * @param {number[]} temperatures
  * @return {number[]}
  */
-var dailyTemperatures = function(temperatures) {
-  const result = [];
+var dailyTemperatures = function(temp) {
+  const answer = new Array(temp.length).fill(0);
+  const stack = [];
   
-  for (let i = 0; i < temperatures.length; i++) {
-    let days = 0;
+  for (let i = 0; i < temp.length; i++) {
+    const currentTemp = temp[i];
     
-    for (let j = i + 1; j < temperatures.length; j++) {
-      if (temperatures[i] < temperatures[j]) {
-        days = j - i;
-        break;
-      }
+    while (stack.length && temp[stack[stack.length - 1]] < currentTemp) {
+      prevDay = stack.pop();
+      answer[prevDay] = i - prevDay;
     }
-    result.push(days);
+    
+    stack.push(i);
   }
 
-  return result;
+  return answer;
 };
 
