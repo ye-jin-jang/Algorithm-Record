@@ -12,18 +12,15 @@
  */
 
 var diameterOfBinaryTree = function(root) {
-    let count = 0;
-    
-    function dfs(root) {
-        if (!root) return 0;
-        let left = dfs(root.left);
-        let right = dfs(root.right);
-        count = Math.max(left + right, count);
-
-        return 1 + Math.max(left, right);
-    }
-    
-    dfs(root);
-
-    return count;
+  let count = 0;
+  dfs(root);
+  return count;
+  
+  function dfs(root) {
+    if (!root) return 0;
+    let right = dfs(root.right);
+    let left = dfs(root.left);
+    count = Math.max(right + left, count);
+    return 1 + Math.max(right, left);
+  }
 };
