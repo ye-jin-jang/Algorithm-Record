@@ -28,17 +28,17 @@ WordDictionary.prototype.search = function(word) {
   return this.dfs(word, 0, this.trie);
 };
 
-WordDictionary.prototype.dfs = function (word, index, root) {
-  if (index === word.length) return root.isEnd === true;
+WordDictionary.prototype.dfs = function (word, index, node) {
+  if (index === word.length) return node.isEnd === true;
   
   if (word[index] === ".") {
-    for (const key in root) {
-      if (this.dfs(word, index + 1, root[key])) return true;
+    for (const key in node) {
+      if (this.dfs(word, index + 1, node[key])) return true;
     }
   }
 
-  if (root[word[index]] != null) {
-    return this.dfs(word, index + 1, root[word[index]]);
+  if (node[word[index]] != null) {
+    return this.dfs(word, index + 1, node[word[index]]);
   }
   
   return false;
