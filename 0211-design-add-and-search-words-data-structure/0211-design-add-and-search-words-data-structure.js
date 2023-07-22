@@ -37,7 +37,7 @@ WordDictionary.prototype.dfs = function (word, index, node) {
     }
   }
 
-  if (node[word[index]] != null) {
+  if (node[word[index]]) {
     return this.dfs(word, index + 1, node[word[index]]);
   }
   
