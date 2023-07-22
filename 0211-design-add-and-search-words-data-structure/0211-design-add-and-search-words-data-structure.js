@@ -11,7 +11,7 @@ WordDictionary.prototype.addWord = function(word) {
   let root = this.trie;
   
   for (let i = 0; i < word.length; i++) {
-    if (root[word[i]] == null) {
+    if (root[word[i]] === undefined) {
       root[word[i]] = {};
     }
     root = root[word[i]];
