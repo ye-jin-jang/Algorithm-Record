@@ -23,10 +23,10 @@ const reorderList = function(head) {
       fast = fast.next.next;
     }
     
-    const half = slow.next;
+    const secondHalf = slow.next;
     slow.next = null;
     
-    return half;
+    return secondHalf;
   }
   
   function reverseList(list) {
