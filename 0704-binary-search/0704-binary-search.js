@@ -8,7 +8,7 @@ const search = function(nums, target) {
   let heig = nums.length - 1;
   
   while (low < heig) {
-    let mid = Math.floor(heig - low / 2) + low;
+    let mid = Math.floor(heig + low / 2);
     
     if (nums[mid] === target) return mid;
     if (nums[mid] > target) {
