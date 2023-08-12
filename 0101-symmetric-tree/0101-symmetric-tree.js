@@ -10,7 +10,7 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
-var isSymmetric = function(root) {
+const isSymmetric = function(root) {
   return isMirror(root, root);
   
   function isMirror(node1, node2) {
