@@ -7,7 +7,7 @@ var missingNumber = function(nums) {
   console.log(sortNums);
   const numsCount = sortNums.length;
   for (let i = 0; i <= numsCount; i++) {
-    if (i != sortNums[i]) {
+    if (i !== sortNums[i]) {
       console.log(i, sortNums[i])
       return i;
     }
