@@ -8,11 +8,10 @@ const isPalindrome = function(x) {
   const mid = Math.floor(len / 2);
   
   for (let i = 0; i < mid; i++) {
-    if(a[i] !== a[len - 1 -i]) {
+    if (a[i] !== a[len - 1 - i]) {
       return false;
     }
   }
-  return true;
   
-
+  return true;
 };
