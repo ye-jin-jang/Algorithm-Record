@@ -3,10 +3,16 @@
  * @return {boolean}
  */
 const isPalindrome = function(x) {
-  let a = x.toString();
-  let reverse = a.split("").reverse().join("");
+  const a = x.toString();
+  const len = a.length;
+  const mid = Math.floor(len / 2);
   
-  return a === reverse
+  for (let i = 0; i < mid; i++) {
+    if(a[i] !== a[len - 1 -i]) {
+      return false;
+    }
+  }
+  return true;
   
 
 };
