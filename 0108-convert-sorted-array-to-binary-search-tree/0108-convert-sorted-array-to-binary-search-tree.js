@@ -11,17 +11,16 @@
  * @return {TreeNode}
  */
 const sortedArrayToBST = function(nums) {
-  const createBst = (left, right)=> {
-      if(left > right) return null;
-    
-      const mid = Math.floor((left+right)/2);
-      const currentNode = new TreeNode(nums[mid]);
-    
-      currentNode.left = createBst(left, mid-1);
-      currentNode.right = createBst(mid+1, right);
-    
-      return currentNode;
-  }
+  return calcurate(0, nums.length - 1);
   
-  return createBst(0, nums.length-1);
+  function calcurate(low, high) {
+    if (low > high) return null;
+    
+    let mid = Math.floor((high + low) / 2);
+    const root = new TreeNode(nums[mid]);
+    root.left = calcurate(low, mid - 1);
+    root.right = calcurate(mid + 1, high);
+  
+    return root;
+  }
 };
