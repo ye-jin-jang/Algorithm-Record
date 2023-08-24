@@ -1,6 +1,6 @@
 
-var WordDictionary = function() {
-  this.trie = {};
+const WordDictionary = function() {
+  this.array = {};
 };
 
 /** 
@@ -8,7 +8,7 @@ var WordDictionary = function() {
  * @return {void}
  */
 WordDictionary.prototype.addWord = function(word) {
-  let root = this.trie;
+  let root = this.array;
   
   for (let i = 0; i < word.length; i++) {
     if (!root[word[i]]) {
@@ -25,24 +25,24 @@ WordDictionary.prototype.addWord = function(word) {
  * @return {boolean}
  */
 WordDictionary.prototype.search = function(word) {
-  return this.dfs(word, 0, this.trie);
-};
-
-WordDictionary.prototype.dfs = function (word, index, node) {
-  if (index === word.length) return node.isEnd === true;
-  
-  if (word[index] === ".") {
-    for (const key in node) {
-      if (this.dfs(word, index + 1, node[key])) return true;
+  const dfs = (node, index) => {
+    if (index === word.length) return node.isEnd === true; 
+    if (word[index] === ".") {
+      for (const key in node) {
+        if (dfs(node[key], index + 1)) {
+          return true;
+        }
+      }
     }
-  }
-
-  if (node[word[index]]) {
-    return this.dfs(word, index + 1, node[word[index]]);
+    if (node[word[index]]) {
+      return dfs(node[word[index]], index + 1);
+    }
+    
+    return false;
   }
   
-  return false;
-}
+  return dfs(this.array, 0);
+};
 
 /** 
  * Your WordDictionary object will be instantiated and called as such:
