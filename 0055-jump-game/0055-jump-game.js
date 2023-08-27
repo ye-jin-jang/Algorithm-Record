@@ -2,18 +2,13 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-var canJump = function(nums) {
-  let index = 0;
-  let max = 0;
-  
-  while (index < nums.length && index <= max) {
-    max = Math.max(nums[index] + index, max);
-    index += 1;
-  }
-  
-  if (index === nums.length) {
-    return true;
-  }
-  
-  return false;
+const canJump = function(nums) {
+  let lastIndex = nums.length - 1;
+	for (let i = lastIndex - 1; i >= 0; i--) {
+		if (i + nums[i] >= lastIndex) {
+			lastIndex = i;
+		}
+	}
+
+	return lastIndex === 0;
 };
