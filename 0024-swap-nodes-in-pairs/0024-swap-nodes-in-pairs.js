@@ -9,9 +9,8 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-var swapPairs = function(head) {
+const swapPairs = function(head) {
   if (!head || !head.next) return head;
-  
   let newHead = head.next;
   let current = head;
   let prev = null;
@@ -26,7 +25,7 @@ var swapPairs = function(head) {
     }
     
     prev = current;
-    current = current.next;    
+    current = current.next;
   }
   
   return newHead;
